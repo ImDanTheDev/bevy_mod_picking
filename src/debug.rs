@@ -368,6 +368,7 @@ pub fn debug_draw(
     pointers: Query<(Entity, &pointer::PointerId, &PointerDebug)>,
     scale: Res<bevy_ui::UiScale>,
 ) {
+    use bevy_color::Color;
     use bevy_text::prelude::*;
     use bevy_ui::prelude::*;
     for (entity, id, debug) in pointers.iter() {

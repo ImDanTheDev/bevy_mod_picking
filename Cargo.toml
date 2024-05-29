@@ -1,6 +1,6 @@
 [package]
 name = "bevy_mod_picking"
-version = "0.18.2 "
+version = "0.18.2"
 authors = ["Aevyrie <aevyrie@gmail.com>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
@@ -14,28 +14,27 @@ rust-version = "1.76.0"
 [package.metadata.docs.rs]
 all-features = true
 
-
 [workspace]
 members = ["crates/*", "backends/*"]
 
 [dependencies]
-bevy_app = { version = "0.13", default-features = false }
-bevy_core = { version = "0.13", default-features = false }
-bevy_ecs = { version = "0.13", default-features = false }
-bevy_math = { version = "0.13", default-features = false }
-bevy_reflect = { version = "0.13", default-features = false }
-bevy_render = { version = "0.13", default-features = false }
-bevy_core_pipeline = { version = "0.13", optional = true, default-features = false }
-bevy_text = { version = "0.13", optional = true, default-features = false, features = [
+bevy_app = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_core = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_ecs = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_math = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_reflect = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_render = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_core_pipeline = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0", optional = true, default-features = false }
+bevy_text = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0", optional = true, default-features = false, features = [
     "default_font",
 ] }
-bevy_ui = { version = "0.13", optional = true, default-features = false }
-bevy_utils = { version = "0.13", default-features = false }
-bevy_window = { version = "0.13", default-features = false }
-
-bevy_eventlistener = "0.7"
-bevy_egui = { optional = true, version = "0.25" }
-bevy_rapier3d = { optional = true, version = "0.25" }
+bevy_ui = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0", optional = true, default-features = false }
+bevy_utils = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_window = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_color = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0" }
+bevy_eventlistener = { git = "https://github.com/ImDanTheDev/bevy_eventlistener.git", rev = "3a222e87c44309de0cc0399a553d7f683b1e35d6"}
+bevy_egui = { optional = true, git = "https://github.com/ImDanTheDev/bevy_egui.git", rev = "caad601b346e407a80cf08b1f9ed79556ab129b4"}
+# bevy_rapier3d = { optional = true, version = "0.25" }
 bevy_xpbd_3d = { optional = true, version = "0.4" }
 
 # Local
@@ -45,13 +44,13 @@ bevy_picking_selection = { optional = true, path = "crates/bevy_picking_selectio
 bevy_picking_highlight = { optional = true, path = "crates/bevy_picking_highlight", version = "0.18" }
 bevy_picking_raycast = { optional = true, path = "backends/bevy_picking_raycast", version = "0.18" }
 bevy_picking_ui = { optional = true, path = "backends/bevy_picking_ui", version = "0.18" }
-bevy_picking_rapier = { optional = true, path = "backends/bevy_picking_rapier", version = "0.18" }
+# bevy_picking_rapier = { optional = true, path = "backends/bevy_picking_rapier", version = "0.18" }
 bevy_picking_sprite = { optional = true, path = "backends/bevy_picking_sprite", version = "0.18" }
 bevy_picking_egui = { optional = true, path = "backends/bevy_picking_egui", version = "0.18" }
 bevy_picking_xpbd = { optional = true, path = "backends/bevy_picking_xpbd", version = "0.18" }
 
 [dev-dependencies]
-bevy = { version = "0.13", default-features = false, features = [
+bevy = { git = "https://github.com/bevyengine/bevy.git", rev = "a8751390aa7ceb168d2632b6677804e58ff6d8f0", default-features = false, features = [
     "bevy_winit",
     "x11",
     "bevy_gltf",
@@ -71,37 +70,26 @@ all = [
     "debug",
     "backend_raycast",
     "backend_bevy_ui",
-    "backend_rapier",
+    # "backend_rapier",
     "backend_sprite",
     "backend_egui",
     "backend_xpbd",
 ]
-default = [
-    "backend_raycast",
-    "backend_bevy_ui",
-    "backend_sprite",
-    "debug",
-    "selection",
-    "highlight",
-]
-selection = [
-    "bevy_picking_selection",
-    "bevy_picking_input/selection",
-    "bevy_picking_highlight/selection",
-]
+default = ["backend_raycast", "backend_bevy_ui", "backend_sprite", "debug", "selection", "highlight"]
+selection = ["bevy_picking_selection", "bevy_picking_input/selection", "bevy_picking_highlight/selection"]
 highlight = ["bevy_picking_highlight/pbr"]
 debug = ["bevy_text", "bevy_ui/bevy_text", "bevy_core_pipeline"]
 backend_raycast = ["bevy_picking_raycast"]
-backend_rapier = ["bevy_picking_rapier", "bevy_rapier3d"]
+# backend_rapier = ["bevy_picking_rapier", "bevy_rapier3d"]
 backend_sprite = ["bevy_picking_sprite", "bevy_picking_highlight/sprite"]
 backend_bevy_ui = ["bevy_picking_ui", "bevy_ui"]
 backend_egui = ["bevy_picking_egui", "bevy_egui"]
 backend_xpbd = ["bevy_picking_xpbd", "bevy_xpbd_3d"]
 
-[[example]]
-name = "rapier"
-path = "examples/rapier.rs"
-required-features = ["backend_rapier"]
+# [[example]]
+# name = "rapier"
+# path = "examples/rapier.rs"
+# required-features = ["backend_rapier"]
 
 [[example]]
 name = "egui"

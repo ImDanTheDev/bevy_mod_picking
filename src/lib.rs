@@ -203,8 +203,8 @@ pub mod debug;
 pub mod backends {
     #[cfg(feature = "backend_egui")]
     pub use bevy_picking_egui as egui;
-    #[cfg(feature = "backend_rapier")]
-    pub use bevy_picking_rapier as rapier;
+    // #[cfg(feature = "backend_rapier")]
+    // pub use bevy_picking_rapier as rapier;
     #[cfg(feature = "backend_raycast")]
     pub use bevy_picking_raycast as raycast;
     #[cfg(feature = "backend_sprite")]
@@ -248,8 +248,8 @@ pub mod prelude {
     pub use backends::bevy_ui::prelude::*;
     #[cfg(feature = "backend_egui")]
     pub use backends::egui::prelude::*;
-    #[cfg(feature = "backend_rapier")]
-    pub use backends::rapier::prelude::*;
+    // #[cfg(feature = "backend_rapier")]
+    // pub use backends::rapier::prelude::*;
     #[cfg(feature = "backend_raycast")]
     pub use backends::raycast::prelude::*;
     #[cfg(feature = "backend_shader")]
@@ -330,10 +330,10 @@ impl bevy_app::PluginGroup for DefaultPickingPlugins {
         {
             builder = builder.add(bevy_picking_ui::BevyUiBackend);
         }
-        #[cfg(feature = "backend_rapier")]
-        {
-            builder = builder.add(bevy_picking_rapier::RapierBackend);
-        }
+        // #[cfg(feature = "backend_rapier")]
+        // {
+        //     builder = builder.add(bevy_picking_rapier::RapierBackend);
+        // }
         #[cfg(feature = "backend_xpbd")]
         {
             builder = builder.add(bevy_picking_xpbd::XpbdBackend);
